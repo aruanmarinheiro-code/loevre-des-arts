@@ -4,8 +4,6 @@ import Link from "next/link";
 import { products } from "@/data/products";
 
 export default function HomePage() {
-  const featured = products.slice(0, 4);
-
   return (
     <>
       <Hero />
@@ -21,16 +19,11 @@ export default function HomePage() {
 
       {/* Featured Products */}
       <section className="max-w-screen-2xl mx-auto px-5 md:px-8 py-16 md:py-20">
-        <div className="flex items-baseline justify-between mb-8">
-          <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/40">
-            Coleção Atual
-          </p>
-          <Link href="/shop" className="font-sans text-[9px] tracking-[0.2em] uppercase text-black/40 hover:text-black transition-colors">
-            Ver Tudo
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10">
-          {featured.map((product, i) => (
+        <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/40 mb-8">
+          Coleção Atual
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10">
+          {products.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}
         </div>
@@ -58,24 +51,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Second product row — remaining */}
-      {products.length > 4 && (
-        <section className="max-w-screen-2xl mx-auto px-5 md:px-8 py-16 md:py-20">
-          <div className="flex items-baseline justify-between mb-8">
-            <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/40">
-              Também no Arquivo
-            </p>
-            <Link href="/shop" className="font-sans text-[9px] tracking-[0.2em] uppercase text-black/40 hover:text-black transition-colors">
-              Loja Completa
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10">
-            {products.slice(4).map((product, i) => (
-              <ProductCard key={product.id} product={product} index={i} />
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* Archive CTA — editorial strip */}
       <section className="bg-black text-white py-20 md:py-28 px-5 md:px-8">
