@@ -4,7 +4,7 @@ export const products: Product[] = [
   {
     id: "1",
     slug: "the-last-judgment-tee",
-    name: "Camiseta Juízo Final",
+    name: "The Last Judgment Tee",
     artist: "Michelangelo Buonarroti",
     artwork: "O Juízo Final",
     year: "1536–1541",
@@ -15,7 +15,7 @@ export const products: Product[] = [
     category: "sacred",
     status: "limited",
     description:
-      "Encomendada pelo Papa Paulo III, cobre a parede inteira do altar da Capela Sistina. Michelangelo levou cinco anos pintando o fim do mundo em afresco. A gente levou esse peso todo e estampou no algodão.",
+      "Commissioned by Pope Paul III, The Last Judgment covers the entire altar wall of the Sistine Chapel. Michelangelo's monumental fresco depicts the second coming of Christ and the final judgment of souls — a cosmic reckoning rendered in heavyweight cotton.",
     fitNotes:
       "Cai largo, como tem que ser. Para um caimento mais estruturado, desce um tamanho. Os ombros passam do ponto — isso é proposital.",
     care: [
@@ -35,7 +35,7 @@ export const products: Product[] = [
   {
     id: "2",
     slug: "the-resurrection-tee",
-    name: "Camiseta A Ressurreição",
+    name: "The Resurrection Tee",
     artist: "Raffaello Sanzio",
     artwork: "A Ressurreição de Cristo",
     year: "1499–1502",
@@ -46,7 +46,7 @@ export const products: Product[] = [
     category: "sacred",
     status: "available",
     description:
-      "Uma das primeiras obras conhecidas de Rafael — feita antes dos 20 anos. Hoje mora no MASP aqui em SP. Uma das raras vezes que o Renascimento italiano veio parar no Brasil. Agora também passa pela sua camiseta.",
+      "One of Raphael's earliest known works, painted before the age of twenty. The Resurrection of Christ — currently housed in São Paulo — depicts a triumphant ascension surrounded by soldiers struck down by divine light. A rare artifact, now worn.",
     fitNotes:
       "Cai largo, como tem que ser. Para um caimento mais estruturado, desce um tamanho. Os ombros passam do ponto — isso é proposital.",
     care: [
@@ -66,7 +66,7 @@ export const products: Product[] = [
   {
     id: "3",
     slug: "the-baptism-tee",
-    name: "Camiseta O Batismo",
+    name: "The Baptism Tee",
     artist: "Verrocchio & Leonardo da Vinci",
     artwork: "O Batismo de Cristo",
     year: "1475–1478",
@@ -77,7 +77,7 @@ export const products: Product[] = [
     category: "renaissance",
     status: "limited",
     description:
-      "Parceria entre Verrocchio e seu aprendiz Leonardo da Vinci. Segundo Vasari, quando Verrocchio viu o anjo que Leonardo pintou, jurou que nunca mais tocaria num pincel. Dois mestres. Uma tela. Uma camiseta.",
+      "A collaboration between Andrea del Verrocchio and his young apprentice Leonardo da Vinci. According to Vasari, upon seeing Leonardo's angel, Verrocchio vowed never to touch a brush again. Two masters. One canvas. One oversized silhouette.",
     fitNotes:
       "Cai largo, como tem que ser. Para um caimento mais estruturado, desce um tamanho. Os ombros passam do ponto — isso é proposital.",
     care: [
@@ -97,7 +97,7 @@ export const products: Product[] = [
   {
     id: "4",
     slug: "the-school-of-athens-tee",
-    name: "Camiseta Escola de Atenas",
+    name: "The School of Athens Tee",
     artist: "Raffaello Sanzio",
     artwork: "A Escola de Atenas",
     year: "1509–1511",
@@ -108,7 +108,7 @@ export const products: Product[] = [
     category: "philosophy",
     status: "available",
     description:
-      "Rafael reuniu os maiores filósofos da antiguidade numa arquitetura clássica imaginária. Platão e Aristóteles no centro — discutindo o eterno dilema entre o ideal e o real. A gente botou tudo isso num algodão 280gsm.",
+      "Raphael's masterpiece of the High Renaissance gathers the greatest philosophers of antiquity beneath the arches of an idealized classical architecture. Plato and Aristotle at the center — the eternal debate between ideal and real, abstraction and matter.",
     fitNotes:
       "Cai largo, como tem que ser. Para um caimento mais estruturado, desce um tamanho. Os ombros passam do ponto — isso é proposital.",
     care: [
@@ -128,7 +128,7 @@ export const products: Product[] = [
   {
     id: "5",
     slug: "the-birth-of-venus-tee",
-    name: "Camiseta O Nascimento de Vênus",
+    name: "The Birth of Venus Tee",
     artist: "Sandro Botticelli",
     artwork: "O Nascimento de Vênus",
     year: "1484–1486",
@@ -139,7 +139,7 @@ export const products: Product[] = [
     category: "mythology",
     status: "available",
     description:
-      "A alegoria de Botticelli sobre beleza e mito — Vênus saindo do mar numa concha, empurrada pelos deuses do vento e recebida pelas Horas. Pintada para os Médici no século XV, arquivada em Florença. Agora estampada em creme natural.",
+      "Botticelli's iconic allegory of beauty and myth — Venus emerging from the sea on a shell, propelled by wind gods and received by a figure of the Hours. Painted for the Medici family, now archived in Florence. Now printed in natural cream.",
     fitNotes:
       "Cai largo, como tem que ser. Para um caimento mais estruturado, desce um tamanho. Os ombros passam do ponto — isso é proposital.",
     care: [
