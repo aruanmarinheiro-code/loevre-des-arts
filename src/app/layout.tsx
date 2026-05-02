@@ -22,19 +22,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Loevre des Arts — Renaissance Series",
+  title: "Loevre des Arts — Série Renascentista",
   description:
-    "Museum-grade streetwear. Oversized t-shirts printed with masterpieces of the Italian Renaissance.",
+    "Camisetas oversized com obras-primas do Renascimento italiano. Estampas de nível museal em algodão pesado.",
   keywords: [
-    "renaissance art",
-    "oversized tee",
+    "arte renascentista",
+    "camiseta oversized",
     "streetwear",
-    "museum print",
-    "art fashion",
+    "estampa de museu",
+    "moda artística",
   ],
   openGraph: {
     title: "Loevre des Arts",
-    description: "Renaissance artifacts for modern uniforms.",
+    description: "Artefatos do Renascimento para o dia a dia.",
     type: "website",
   },
 };
@@ -45,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="pt-BR" className={`${cormorant.variable} ${inter.variable}`}>
       <body>
         <CartProvider>
           <Header />

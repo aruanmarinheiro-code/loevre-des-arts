@@ -17,7 +17,7 @@ export default function ArchivePage() {
           O<br /><em>Arquivo.</em>
         </h1>
         <p className="font-sans text-xs text-black/40 leading-relaxed max-w-md mt-8">
-          Cinco obras. Cinco séculos. Cada peça extraída de arquivos de museus e traduzida em um objeto de algodão para uso contemporâneo. Navegue como em uma galeria — devagar, com atenção.
+          Cinco obras. Cinco séculos. Cada peça saiu de um arquivo de museu e virou algodão. Olha com calma — tem história em cada estampa.
         </p>
       </div>
 

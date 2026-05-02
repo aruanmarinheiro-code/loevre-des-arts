@@ -27,7 +27,7 @@ export default function EditorialPage() {
             Editorial<br /><em>SS2025</em>
           </h1>
           <p className="font-sans text-xs text-black/40 max-w-xs leading-relaxed">
-            Imagens clássicas, silhuetas contemporâneas. Apresentadas como objetos de galeria. Usadas como uniformes de rua.
+            Arte do século XV no corpo. Algodão pesado na rua. Sem contradição.
           </p>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function EditorialPage() {
         <div className="max-w-screen-2xl mx-auto max-w-3xl">
           <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/25 mb-8">Direção</p>
           <p className="font-serif text-3xl md:text-5xl text-black leading-tight italic">
-            &ldquo;Cada peça é um estudo. Cada estampa, um relatório de campo do arquivo.&rdquo;
+            &ldquo;Cada peça saiu de um museu. Cada estampa carrega quinhentos anos no algodão.&rdquo;
           </p>
           <p className="font-sans text-[10px] text-black/30 tracking-wider mt-6">
             Loevre des Arts — Campanha SS2025

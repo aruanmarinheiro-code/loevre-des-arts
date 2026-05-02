@@ -14,7 +14,7 @@ export default function HomePage() {
       <div className="border-y border-black/10 py-3 overflow-hidden bg-white">
         <div className="flex gap-12 whitespace-nowrap animate-none">
           <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/30 repeat-infinite">
-            {Array(8).fill("Série Renascentista — Edição Limitada — Algodão Pesado — Oversized — Loevre des Arts — ").join("")}
+            {Array(8).fill("Série Renascentista — Edição Limitada — Algodão 280gsm — Oversized — Arte que sai do museu — Loevre des Arts — ").join("")}
           </p>
         </div>
       </div>
@@ -42,11 +42,11 @@ export default function HomePage() {
           <h2 className="font-serif text-[clamp(2.5rem,8vw,7rem)] text-black leading-[0.9] max-w-4xl">
             Arte clássica.
             <br />
-            <em>Silhueta contemporânea.</em>
+            <em>Roupa de todo dia.</em>
           </h2>
           <div className="flex flex-col md:flex-row md:items-end justify-between mt-10 gap-6">
             <p className="font-sans text-xs text-black/40 leading-relaxed max-w-xs">
-              Cada peça transforma uma obra histórica em um uniforme contemporâneo — entre o pôster de museu, o objeto de galeria e o essencial do streetwear.
+              Pegamos obras que ficaram séculos em museus e colocamos no algodão. Entre o pôster de galeria, o objeto de colecionador e a camiseta que você usa pra sair.
             </p>
             <Link
               href="/about"
@@ -87,12 +87,12 @@ export default function HomePage() {
             <h2 className="font-serif text-[clamp(2.5rem,6vw,5.5rem)] leading-tight">
               Cinco séculos.
               <br />
-              <em>Cinco artefatos.</em>
+              <em>Cinco peças.</em>
             </h2>
           </div>
           <div className="flex flex-col gap-4 md:items-end">
             <p className="font-sans text-xs text-white/40 leading-relaxed max-w-xs md:text-right">
-              De Botticelli a Michelangelo. Cada estampa reproduzida em qualidade de museu no algodão natural.
+              De Botticelli a Michelangelo. Cada estampa vinda direto do arquivo, impressa em algodão creme natural.
             </p>
             <Link
               href="/archive"

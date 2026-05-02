@@ -13,19 +13,19 @@ export default function Hero() {
         </p>
 
         <h1 className="font-serif text-[clamp(3.5rem,12vw,9rem)] text-black leading-[0.88] tracking-tight mb-10 animate-fade-in">
-          Artefatos do
+          Arte que saiu
           <br />
-          <em>Renascimento</em>
+          <em>do museu</em>
           <br />
-          para uniformes
+          e virou
           <br />
-          modernos.
+          uniforme.
         </h1>
 
         <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-black/40 max-w-xs leading-loose mb-14">
-          Estampas de museu. Algodão pesado.
+          Obras do Renascimento. Algodão 280gsm.
           <br />
-          Silhueta oversized. Edições limitadas.
+          Oversized. Edição limitada.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3">

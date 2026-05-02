@@ -19,21 +19,21 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
           <div className="md:col-span-7">
             <p className="font-serif text-2xl md:text-3xl text-black leading-relaxed mb-10">
-              Uma marca construída em torno de imagens clássicas, algodão pesado e silhuetas oversized. Cada peça transforma uma obra histórica em um uniforme contemporâneo — entre o pôster de museu, o objeto de galeria e o essencial do streetwear.
+              Pegamos obras que passaram séculos presas em museus e colocamos no algodão. Simples assim.
             </p>
 
             <div className="space-y-5 font-sans text-xs text-black/50 leading-relaxed max-w-prose">
               <p>
-                Trabalhamos exclusivamente com obras do Renascimento italiano — um período que definiu a cultura visual ocidental por cinco séculos. Michelangelo, Rafael, Botticelli, Leonardo. Nomes tão incorporados ao cânone que funcionam quase como arquétipos.
+                A gente trabalha com obras do Renascimento italiano — um período que definiu como o ocidente enxerga arte até hoje. Michelangelo, Rafael, Botticelli, Leonardo. São nomes tão grandes que viraram referência cultural muito além da pintura.
               </p>
               <p>
-                Nosso processo começa no arquivo. Cada obra é extraída de reproduções de nível museal, tratada como documento primário e impressa com precisão em algodão natural. O resultado não é uma reprodução licenciada. É um estudo — uma interpretação vestível de um artefato histórico.
+                O processo começa no arquivo. Cada obra é tratada como documento primário e impressa com precisão em algodão natural. Não é uma reprodução qualquer — é um estudo. Uma peça vestível que carrega o peso de uma obra histórica.
               </p>
               <p>
-                A peça em si é parte do conceito. 280gsm de algodão pesado. Caimento oversized. Tom natural off-white. Um suporte neutro para imagens que sobreviveram a impérios, papas e séculos de revisão cultural.
+                O tecido faz parte do conceito. 280gsm de algodão pesado. Caimento oversized. Tom creme natural. Um suporte neutro para imagens que sobreviveram a impérios, papas e quinhentos anos de revisão cultural.
               </p>
               <p>
-                Lançamos em tiragens limitadas. Quando uma peça esgota, volta ao arquivo. Sem reposição. Sem reimpressão.
+                Lançamos em tiragens limitadas. Quando esgota, vai pro arquivo. Sem reposição. Sem reimpressão. Acabou, acabou.
               </p>
             </div>
           </div>
