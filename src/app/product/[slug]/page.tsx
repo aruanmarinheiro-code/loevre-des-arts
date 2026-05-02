@@ -13,9 +13,7 @@ const sizes: Size[] = ["P", "M", "G", "GG", "XG"];
 
 export default function ProductPage() {
   const params = useParams();
-  const slug = params?.slug as string;
-  const product = getProductBySlug(slug);
-
+  const product = getProductBySlug(params?.slug as string);
   const [selectedSize, setSelectedSize] = useState<Size | null>(null);
   const [activeImage, setActiveImage] = useState(0);
   const [sizeError, setSizeError] = useState(false);
@@ -26,142 +24,99 @@ export default function ProductPage() {
   const related = getRelatedProducts(product, 3);
 
   const handleAddToCart = () => {
-    if (!selectedSize) {
-      setSizeError(true);
-      return;
-    }
+    if (!selectedSize) { setSizeError(true); return; }
     setSizeError(false);
     addItem(product, selectedSize);
   };
 
   return (
-    <div className="pt-16">
+    <div className="pt-12">
       {/* Breadcrumb */}
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-6 border-b border-brand-stone">
-        <nav className="flex items-center gap-2 font-sans text-xs text-brand-gray">
-          <Link href="/" className="hover:text-brand-black transition-colors">
-            Home
-          </Link>
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-8 py-4 border-b border-black/10">
+        <nav className="flex items-center gap-2 font-sans text-[9px] tracking-widest uppercase text-black/30">
+          <Link href="/" className="hover:text-black transition-colors">Início</Link>
           <span>/</span>
-          <Link
-            href="/shop"
-            className="hover:text-brand-black transition-colors"
-          >
-            Shop
-          </Link>
+          <Link href="/shop" className="hover:text-black transition-colors">Loja</Link>
           <span>/</span>
-          <span className="text-brand-black">{product.name}</span>
+          <span className="text-black">{product.name}</span>
         </nav>
       </div>
 
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
-          {/* Left: Images */}
-          <div className="space-y-4">
-            {/* Main image */}
-            <div className="relative aspect-[4/5] bg-brand-cream overflow-hidden">
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-8 py-10 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+
+          {/* Images */}
+          <div className="space-y-3">
+            <div className="relative aspect-[4/5] bg-[#F5F3EF] overflow-hidden">
               <Image
                 src={product.images[activeImage] || product.image}
                 alt={product.name}
                 fill
-                className="object-contain p-6 transition-opacity duration-300"
+                className="object-contain p-8"
                 priority
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
-              {/* Placeholder text */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
-                <p className="font-serif text-sm text-brand-gray text-center px-8">
-                  {product.artwork}
-                  <br />
-                  <span className="text-xs">{product.artist}</span>
-                </p>
-              </div>
             </div>
-
-            {/* Thumbnails */}
             {product.images.length > 1 && (
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 {product.images.map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveImage(i)}
-                    className={`relative w-20 aspect-square bg-brand-cream border-2 transition-all ${
-                      activeImage === i
-                        ? "border-brand-black"
-                        : "border-transparent hover:border-brand-stone"
-                    }`}
+                    className={`relative w-16 aspect-square bg-[#F5F3EF] border transition-all ${activeImage === i ? "border-black" : "border-transparent"}`}
                   >
-                    <Image
-                      src={img}
-                      alt={`${product.name} view ${i + 1}`}
-                      fill
-                      className="object-cover"
-                    />
+                    <Image src={img} alt="" fill className="object-cover" />
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Right: Product info */}
+          {/* Info */}
           <div className="flex flex-col">
-            {/* Status */}
-            <p className="font-sans text-[10px] tracking-widest uppercase text-brand-gray mb-4">
-              {product.status === "limited" ? "— Limited Drop" : product.status === "coming-soon" ? "— Coming Soon" : "— Available"}
+            <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/30 mb-5">
+              {product.status === "limited" ? "— Edição Limitada" : product.status === "coming-soon" ? "— Em Breve" : "— Disponível"}
             </p>
 
-            {/* Artist */}
-            <p className="font-sans text-xs tracking-widest uppercase text-brand-charcoal mb-2">
+            <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-black/50 mb-2">
               {product.artist}
             </p>
 
-            {/* Name */}
-            <h1 className="font-serif text-4xl md:text-5xl text-brand-black leading-tight mb-2">
+            <h1 className="font-serif text-4xl md:text-5xl text-black leading-tight mb-1">
               {product.name}
             </h1>
 
-            {/* Artwork */}
-            <p className="font-sans text-sm text-brand-gray italic mb-6">
-              Based on &ldquo;{product.artwork}&rdquo;
+            <p className="font-sans text-xs text-black/40 italic mb-6">
+              Baseado em &ldquo;{product.artwork}&rdquo;
             </p>
 
-            {/* Price */}
-            <p className="font-serif text-3xl text-brand-black mb-8">
+            <p className="font-sans text-sm text-black mb-8">
               R$ {product.price.toLocaleString("pt-BR")}
             </p>
 
-            {/* Description */}
-            <p className="font-sans text-sm text-brand-charcoal leading-relaxed mb-8 max-w-md">
+            <p className="font-sans text-xs text-black/50 leading-relaxed mb-8 max-w-md">
               {product.description}
             </p>
 
-            {/* Size selector */}
-            <div className="mb-6">
+            {/* Sizes */}
+            <div className="mb-5">
               <div className="flex items-center justify-between mb-3">
-                <p className="font-sans text-xs tracking-widest uppercase text-brand-charcoal">
-                  Select Size
+                <p className="font-sans text-[9px] tracking-[0.2em] uppercase text-black/40">
+                  Selecionar Tamanho
                 </p>
-                <Link
-                  href="/size-guide"
-                  className="font-sans text-xs text-brand-gray hover-underline hover:text-brand-black transition-colors"
-                >
-                  Size Guide
+                <Link href="/tamanhos" className="font-sans text-[9px] tracking-widest uppercase text-black/30 hover:text-black transition-colors">
+                  Guia de Tamanhos
                 </Link>
               </div>
               <div className="flex gap-2 flex-wrap">
                 {sizes.map((size) => (
                   <button
                     key={size}
-                    onClick={() => {
-                      setSelectedSize(size);
-                      setSizeError(false);
-                    }}
-                    className={`w-12 h-12 font-sans text-sm border transition-all duration-200 ${
+                    onClick={() => { setSelectedSize(size); setSizeError(false); }}
+                    className={`w-11 h-11 font-sans text-xs border transition-all duration-200 ${
                       selectedSize === size
-                        ? "bg-brand-black text-white border-brand-black"
-                        : "border-brand-stone text-brand-charcoal hover:border-brand-black"
+                        ? "bg-black text-white border-black"
+                        : "border-black/20 text-black/60 hover:border-black hover:text-black"
                     }`}
                   >
                     {size}
@@ -169,123 +124,98 @@ export default function ProductPage() {
                 ))}
               </div>
               {sizeError && (
-                <p className="mt-2 font-sans text-xs text-red-500">
-                  Please select a size before adding to cart.
+                <p className="mt-2 font-sans text-[10px] text-red-500 tracking-wider">
+                  Selecione um tamanho antes de adicionar ao carrinho.
                 </p>
               )}
             </div>
 
-            {/* Add to cart */}
             <button
               onClick={handleAddToCart}
-              className="w-full bg-brand-black text-white font-sans text-xs tracking-widest uppercase py-4 hover:bg-brand-charcoal transition-colors duration-300 mb-4"
+              className="w-full bg-black text-white font-sans text-[10px] tracking-[0.25em] uppercase py-4 hover:bg-black/70 transition-colors mb-3"
             >
-              Add to Cart — R$ {product.price}
+              Adicionar ao Carrinho — R$ {product.price}
             </button>
 
-            <p className="font-sans text-xs text-brand-gray text-center mb-10">
-              Free shipping on orders over R$ 500 · 14-day returns
+            <p className="font-sans text-[9px] text-black/30 text-center mb-10 tracking-wider">
+              Frete grátis acima de R$ 500 · Devolução em 14 dias
             </p>
 
-            {/* Artwork details */}
-            <details className="border-t border-brand-stone group">
-              <summary className="flex items-center justify-between py-5 cursor-pointer font-sans text-xs tracking-widest uppercase text-brand-charcoal hover:text-brand-black transition-colors list-none">
-                Artwork Details
-                <span className="text-lg group-open:rotate-45 transition-transform duration-200">
-                  +
-                </span>
-              </summary>
-              <div className="pb-5 grid grid-cols-2 gap-y-4 gap-x-6">
-                {[
-                  { label: "Artwork", value: product.artwork },
-                  { label: "Artist", value: product.artist },
-                  { label: "Year", value: product.year },
-                  { label: "Medium", value: product.medium },
-                  { label: "Location", value: product.location },
-                  { label: "Dimensions", value: product.dimensions },
-                ].map(({ label, value }) => (
-                  <div key={label}>
-                    <p className="font-sans text-[10px] tracking-widest uppercase text-brand-gray mb-1">
-                      {label}
-                    </p>
-                    <p className="font-sans text-sm text-brand-charcoal">
-                      {value}
-                    </p>
+            {/* Accordion */}
+            {[
+              {
+                title: "Detalhes da Obra",
+                content: (
+                  <div className="pb-5 grid grid-cols-2 gap-y-4 gap-x-6">
+                    {[
+                      { label: "Obra", value: product.artwork },
+                      { label: "Artista", value: product.artist },
+                      { label: "Ano", value: product.year },
+                      { label: "Técnica", value: product.medium },
+                      { label: "Localização", value: product.location },
+                      { label: "Dimensões", value: product.dimensions },
+                    ].map(({ label, value }) => (
+                      <div key={label}>
+                        <p className="font-sans text-[9px] tracking-widest uppercase text-black/30 mb-1">{label}</p>
+                        <p className="font-sans text-xs text-black/70">{value}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </details>
-
-            {/* Fit Notes */}
-            <details className="border-t border-brand-stone group">
-              <summary className="flex items-center justify-between py-5 cursor-pointer font-sans text-xs tracking-widest uppercase text-brand-charcoal hover:text-brand-black transition-colors list-none">
-                Fit Notes
-                <span className="text-lg group-open:rotate-45 transition-transform duration-200">
-                  +
-                </span>
-              </summary>
-              <div className="pb-5">
-                <p className="font-sans text-sm text-brand-charcoal leading-relaxed">
-                  {product.fitNotes}
-                </p>
-                <div className="mt-4 p-4 bg-brand-off-white">
-                  <p className="font-sans text-xs text-brand-gray">
-                    <strong className="font-medium text-brand-charcoal">Fabric:</strong>{" "}
-                    100% heavyweight cotton, 280gsm. Natural cream / off-white.
-                    Pre-washed for minimal shrinkage.
-                  </p>
-                </div>
-              </div>
-            </details>
-
-            {/* Care */}
-            <details className="border-t border-b border-brand-stone group">
-              <summary className="flex items-center justify-between py-5 cursor-pointer font-sans text-xs tracking-widest uppercase text-brand-charcoal hover:text-brand-black transition-colors list-none">
-                Care Instructions
-                <span className="text-lg group-open:rotate-45 transition-transform duration-200">
-                  +
-                </span>
-              </summary>
-              <div className="pb-5">
-                <ul className="space-y-2">
-                  {product.care.map((instruction) => (
-                    <li
-                      key={instruction}
-                      className="font-sans text-sm text-brand-charcoal flex items-start gap-2"
-                    >
-                      <span className="text-brand-gray mt-0.5">—</span>
-                      {instruction}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </details>
+                ),
+              },
+              {
+                title: "Caimento",
+                content: (
+                  <div className="pb-5">
+                    <p className="font-sans text-xs text-black/60 leading-relaxed">{product.fitNotes}</p>
+                    <div className="mt-3 p-3 bg-[#F5F3EF]">
+                      <p className="font-sans text-[10px] text-black/50">
+                        100% algodão pesado, 280gsm. Creme natural / off-white. Pré-lavado.
+                      </p>
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                title: "Cuidados",
+                content: (
+                  <div className="pb-5">
+                    <ul className="space-y-2">
+                      {product.care.map((c) => (
+                        <li key={c} className="font-sans text-xs text-black/60 flex gap-2">
+                          <span className="text-black/20">—</span> {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ),
+              },
+            ].map(({ title, content }) => (
+              <details key={title} className="border-t border-black/10 group">
+                <summary className="flex items-center justify-between py-4 cursor-pointer font-sans text-[9px] tracking-[0.2em] uppercase text-black/60 hover:text-black transition-colors list-none">
+                  {title}
+                  <span className="text-base group-open:rotate-45 transition-transform duration-200 text-black/30">+</span>
+                </summary>
+                {content}
+              </details>
+            ))}
+            <div className="border-t border-black/10" />
           </div>
         </div>
 
-        {/* You may also like */}
+        {/* Related */}
         {related.length > 0 && (
-          <div className="mt-24 md:mt-32">
-            <div className="flex items-end justify-between mb-10">
-              <div>
-                <p className="font-sans text-[10px] tracking-widest uppercase text-brand-gray mb-2">
-                  Continue Exploring
-                </p>
-                <h2 className="font-serif text-3xl md:text-4xl text-brand-black">
-                  You May Also Like
-                </h2>
-              </div>
-              <Link
-                href="/shop"
-                className="hidden md:block font-sans text-xs tracking-widest uppercase text-brand-charcoal hover-underline"
-              >
-                View All
+          <div className="mt-20 md:mt-28">
+            <div className="flex items-baseline justify-between mb-8">
+              <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/40">
+                Você também pode gostar
+              </p>
+              <Link href="/shop" className="font-sans text-[9px] tracking-widest uppercase text-black/30 hover:text-black transition-colors">
+                Ver Tudo
               </Link>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12">
-              {related.map((p, i) => (
-                <ProductCard key={p.id} product={p} index={i} />
-              ))}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-10">
+              {related.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
             </div>
           </div>
         )}

@@ -2,44 +2,34 @@ import ArchiveCard from "@/components/ArchiveCard";
 import { products } from "@/data/products";
 
 export const metadata = {
-  title: "Archive — Loevre des Arts",
-  description:
-    "The complete archive. Five centuries of Italian Renaissance art, translated into wearable artifacts.",
+  title: "Arquivo — Loevre des Arts",
+  description: "O arquivo completo. Cinco séculos de arte renascentista italiana, traduzidos em artefatos vestíveis.",
 };
 
 export default function ArchivePage() {
   return (
-    <div className="pt-16">
-      {/* Page header */}
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-16 md:py-24 border-b border-brand-stone">
-        <div className="max-w-2xl">
-          <p className="font-sans text-[10px] tracking-widest uppercase text-brand-gray mb-6">
-            Loevre des Arts — Archive
-          </p>
-          <h1 className="font-serif text-6xl md:text-8xl text-brand-black leading-[0.9] mb-8">
-            The
-            <br />
-            <em>Archive.</em>
-          </h1>
-          <p className="font-sans text-sm text-brand-charcoal leading-relaxed max-w-md">
-            Five works. Five centuries. Each piece sourced from museum archives
-            and translated into a cotton object for contemporary use. Browse
-            the collection as you would a gallery — slowly, with attention.
-          </p>
-        </div>
+    <div className="pt-12">
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-8 py-12 md:py-20 border-b border-black/10">
+        <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/30 mb-6">
+          Loevre des Arts — Arquivo
+        </p>
+        <h1 className="font-serif text-[clamp(3.5rem,10vw,8rem)] text-black leading-[0.88]">
+          O<br /><em>Arquivo.</em>
+        </h1>
+        <p className="font-sans text-xs text-black/40 leading-relaxed max-w-md mt-8">
+          Cinco obras. Cinco séculos. Cada peça extraída de arquivos de museus e traduzida em um objeto de algodão para uso contemporâneo. Navegue como em uma galeria — devagar, com atenção.
+        </p>
       </div>
 
-      {/* Archive entries */}
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10">
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-8">
         {products.map((product, i) => (
           <ArchiveCard key={product.id} product={product} index={i} />
         ))}
       </div>
 
-      {/* Footer note */}
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-16 text-center">
-        <p className="font-sans text-xs text-brand-gray tracking-widest uppercase">
-          Archive updated seasonally — {new Date().getFullYear()}
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-8 py-12 text-center">
+        <p className="font-sans text-[9px] text-black/20 tracking-widest uppercase">
+          Arquivo atualizado sazonalmente — {new Date().getFullYear()}
         </p>
       </div>
     </div>

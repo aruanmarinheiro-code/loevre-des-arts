@@ -10,123 +10,97 @@ export default function HomePage() {
     <>
       <Hero />
 
+      {/* Marquee strip */}
+      <div className="border-y border-black/10 py-3 overflow-hidden bg-white">
+        <div className="flex gap-12 whitespace-nowrap animate-none">
+          <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/30 repeat-infinite">
+            {Array(8).fill("Série Renascentista — Edição Limitada — Algodão Pesado — Oversized — Loevre des Arts — ").join("")}
+          </p>
+        </div>
+      </div>
+
       {/* Featured Products */}
-      <section className="max-w-screen-xl mx-auto px-6 md:px-10 py-20 md:py-28">
-        <div className="flex items-end justify-between mb-12 md:mb-16">
-          <div>
-            <p className="font-sans text-[10px] tracking-widest uppercase text-brand-gray mb-3">
-              Current Collection
-            </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-brand-black">
-              The Archive
-            </h2>
-          </div>
-          <Link
-            href="/shop"
-            className="hidden md:block font-sans text-xs tracking-widest uppercase text-brand-charcoal hover-underline hover:text-brand-black transition-colors"
-          >
-            View All
+      <section className="max-w-screen-2xl mx-auto px-5 md:px-8 py-16 md:py-20">
+        <div className="flex items-baseline justify-between mb-8">
+          <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/40">
+            Coleção Atual
+          </p>
+          <Link href="/shop" className="font-sans text-[9px] tracking-[0.2em] uppercase text-black/40 hover:text-black transition-colors">
+            Ver Tudo
           </Link>
         </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10">
           {featured.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}
         </div>
-
-        <div className="mt-10 flex justify-center md:hidden">
-          <Link
-            href="/shop"
-            className="font-sans text-xs tracking-widest uppercase border border-brand-black px-8 py-3.5 hover:bg-brand-black hover:text-white transition-all duration-300"
-          >
-            View All Pieces
-          </Link>
-        </div>
       </section>
 
-      {/* Brand Statement */}
-      <section className="bg-brand-black text-white py-24 md:py-32 px-6 md:px-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="font-sans text-[10px] tracking-ultra-wide uppercase text-white/40 mb-8">
-            Manifesto
-          </p>
-          <blockquote className="font-serif text-3xl md:text-5xl leading-tight mb-10">
-            "A brand built around classical images, heavy cotton and oversized
-            silhouettes."
-          </blockquote>
-          <p className="font-sans text-sm text-white/60 leading-relaxed max-w-xl mx-auto mb-10">
-            Each piece transforms historical artwork into a contemporary uniform
-            — somewhere between a museum poster, a gallery object and a
-            streetwear essential.
-          </p>
-          <Link
-            href="/about"
-            className="font-sans text-xs tracking-widest uppercase border border-white/40 px-8 py-3.5 text-white/70 hover:border-white hover:text-white transition-all duration-300"
-          >
-            Read More
-          </Link>
-        </div>
-      </section>
-
-      {/* Archive CTA */}
-      <section className="max-w-screen-xl mx-auto px-6 md:px-10 py-20 md:py-28">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div>
-            <p className="font-sans text-[10px] tracking-widest uppercase text-brand-gray mb-6">
-              The Archive
+      {/* Full-width statement */}
+      <section className="border-y border-black/10 py-20 md:py-28 px-5 md:px-8">
+        <div className="max-w-screen-2xl mx-auto">
+          <h2 className="font-serif text-[clamp(2.5rem,8vw,7rem)] text-black leading-[0.9] max-w-4xl">
+            Arte clássica.
+            <br />
+            <em>Silhueta contemporânea.</em>
+          </h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mt-10 gap-6">
+            <p className="font-sans text-xs text-black/40 leading-relaxed max-w-xs">
+              Cada peça transforma uma obra histórica em um uniforme contemporâneo — entre o pôster de museu, o objeto de galeria e o essencial do streetwear.
             </p>
-            <h2 className="font-serif text-4xl md:text-6xl text-brand-black leading-tight mb-6">
-              Five centuries.
+            <Link
+              href="/about"
+              className="self-start font-sans text-[10px] tracking-[0.25em] uppercase border border-black px-8 py-3.5 hover:bg-black hover:text-white transition-all duration-300"
+            >
+              Sobre a Marca
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Second product row — remaining */}
+      {products.length > 4 && (
+        <section className="max-w-screen-2xl mx-auto px-5 md:px-8 py-16 md:py-20">
+          <div className="flex items-baseline justify-between mb-8">
+            <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/40">
+              Também no Arquivo
+            </p>
+            <Link href="/shop" className="font-sans text-[9px] tracking-[0.2em] uppercase text-black/40 hover:text-black transition-colors">
+              Loja Completa
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10">
+            {products.slice(4).map((product, i) => (
+              <ProductCard key={product.id} product={product} index={i} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Archive CTA — editorial strip */}
+      <section className="bg-black text-white py-20 md:py-28 px-5 md:px-8">
+        <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-10">
+          <div>
+            <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-white/30 mb-6">
+              O Arquivo
+            </p>
+            <h2 className="font-serif text-[clamp(2.5rem,6vw,5.5rem)] leading-tight">
+              Cinco séculos.
               <br />
-              Five artifacts.
+              <em>Cinco artefatos.</em>
             </h2>
-            <p className="font-sans text-sm text-brand-charcoal leading-relaxed mb-8 max-w-sm">
-              From Botticelli&apos;s Venus to Michelangelo&apos;s Last Judgment.
-              Each print sourced from museum archives and reproduced in
-              museum-grade quality on natural cream cotton.
+          </div>
+          <div className="flex flex-col gap-4 md:items-end">
+            <p className="font-sans text-xs text-white/40 leading-relaxed max-w-xs md:text-right">
+              De Botticelli a Michelangelo. Cada estampa reproduzida em qualidade de museu no algodão natural.
             </p>
             <Link
               href="/archive"
-              className="inline-block font-sans text-xs tracking-widest uppercase border border-brand-black px-8 py-3.5 hover:bg-brand-black hover:text-white transition-all duration-300"
+              className="self-start md:self-auto font-sans text-[10px] tracking-[0.25em] uppercase border border-white/30 px-8 py-3.5 hover:bg-white hover:text-black transition-all duration-300"
             >
-              Enter the Archive
+              Entrar no Arquivo
             </Link>
           </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-px bg-brand-stone">
-            {[
-              { number: "5", label: "Archive Pieces" },
-              { number: "280g", label: "GSM Cotton Weight" },
-              { number: "500+", label: "Years of History" },
-              { number: "Ltd.", label: "Edition Format" },
-            ].map(({ number, label }) => (
-              <div key={label} className="bg-white p-8 md:p-10">
-                <p className="font-serif text-4xl md:text-5xl text-brand-black mb-2">
-                  {number}
-                </p>
-                <p className="font-sans text-xs tracking-widest uppercase text-brand-gray">
-                  {label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Editorial strip */}
-      <section className="border-t border-brand-stone bg-brand-off-white py-12">
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="font-serif text-2xl md:text-3xl text-brand-black italic">
-            Shot as artifacts. Worn as uniforms.
-          </p>
-          <Link
-            href="/editorial"
-            className="font-sans text-xs tracking-widest uppercase text-brand-charcoal border-b border-brand-charcoal pb-0.5 hover:text-brand-black hover:border-brand-black transition-colors whitespace-nowrap"
-          >
-            View Editorial →
-          </Link>
         </div>
       </section>
     </>

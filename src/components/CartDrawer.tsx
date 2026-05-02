@@ -4,145 +4,88 @@ import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 
 export default function CartDrawer() {
-  const { items, isOpen, closeCart, removeItem, updateQuantity, total } =
-    useCart();
+  const { items, isOpen, closeCart, removeItem, updateQuantity, total } = useCart();
 
   const handleCheckout = () => {
-    alert(
-      "Checkout — Em breve.\n\nIntegração com pagamento será configurada em etapa futura."
-    );
+    alert("Checkout — Em breve.\n\nIntegração com pagamento será configurada em etapa futura.");
   };
 
   return (
     <>
-      {/* Overlay */}
       <div
-        className={`overlay fixed inset-0 bg-black/40 z-50 ${
-          isOpen ? "visible" : ""
-        }`}
+        className={`overlay fixed inset-0 bg-black/30 z-50 ${isOpen ? "visible" : ""}`}
         onClick={closeCart}
       />
 
-      {/* Drawer */}
-      <div
-        className={`cart-drawer fixed right-0 top-0 h-full w-full max-w-md bg-white z-50 flex flex-col shadow-2xl ${
-          isOpen ? "open" : ""
-        }`}
-      >
+      <div className={`cart-drawer fixed right-0 top-0 h-full w-full max-w-sm bg-white z-50 flex flex-col ${isOpen ? "open" : ""}`}>
         {/* Header */}
-        <div className="flex items-center justify-between px-8 py-6 border-b border-brand-stone">
-          <div>
-            <p className="font-sans text-xs tracking-widest uppercase text-brand-gray">
-              Your Cart
-            </p>
-            <p className="font-serif text-xl text-brand-black mt-0.5">
-              {items.length === 0
-                ? "Empty archive"
-                : `${items.length} ${items.length === 1 ? "piece" : "pieces"}`}
-            </p>
-          </div>
+        <div className="flex items-center justify-between px-6 py-5 border-b border-black/10">
+          <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-black">
+            Carrinho {items.length > 0 && `(${items.reduce((s, i) => s + i.quantity, 0)})`}
+          </p>
           <button
             onClick={closeCart}
-            className="font-sans text-xs tracking-widest uppercase text-brand-gray hover:text-brand-black transition-colors"
-            aria-label="Close cart"
+            className="font-sans text-[10px] tracking-[0.2em] uppercase text-black/40 hover:text-black transition-colors"
           >
-            Close
+            Fechar
           </button>
         </div>
 
         {/* Items */}
-        <div className="flex-1 overflow-y-auto px-8 py-6">
+        <div className="flex-1 overflow-y-auto px-6 py-6">
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <p className="font-serif text-4xl text-brand-light-gray mb-4">∅</p>
-              <p className="font-sans text-sm text-brand-gray">
-                No artifacts selected.
+              <p className="font-serif text-5xl text-black/10 mb-4">—</p>
+              <p className="font-sans text-[10px] tracking-widest uppercase text-black/40">
+                Nenhuma peça selecionada.
               </p>
               <button
                 onClick={closeCart}
-                className="mt-6 font-sans text-xs tracking-widest uppercase border border-brand-black px-6 py-3 hover:bg-brand-black hover:text-white transition-all duration-300"
+                className="mt-8 font-sans text-[10px] tracking-[0.2em] uppercase border border-black px-6 py-3 hover:bg-black hover:text-white transition-all duration-300"
               >
-                Browse Collection
+                Ver Coleção
               </button>
             </div>
           ) : (
-            <ul className="flex flex-col gap-6">
+            <ul className="flex flex-col divide-y divide-black/10">
               {items.map((item) => (
-                <li
-                  key={`${item.product.id}-${item.size}`}
-                  className="flex gap-5 pb-6 border-b border-brand-stone last:border-0"
-                >
-                  {/* Image */}
-                  <div className="w-20 h-24 bg-brand-cream flex-shrink-0 relative overflow-hidden">
+                <li key={`${item.product.id}-${item.size}`} className="flex gap-4 py-5">
+                  <div className="w-16 h-20 bg-brand-cream flex-shrink-0 relative overflow-hidden">
                     <Image
                       src={item.product.image}
                       alt={item.product.name}
                       fill
-                      className="object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = "none";
-                      }}
+                      className="object-contain p-1"
                     />
-                    <div className="absolute inset-0 bg-brand-cream opacity-30" />
                   </div>
 
-                  {/* Info */}
                   <div className="flex-1 min-w-0">
-                    <p className="font-serif text-base text-brand-black leading-tight">
+                    <p className="font-sans text-[11px] tracking-wider uppercase text-black leading-snug">
                       {item.product.name}
                     </p>
-                    <p className="font-sans text-xs text-brand-gray mt-1">
+                    <p className="font-sans text-[10px] text-black/40 mt-0.5">
                       {item.product.artist}
                     </p>
-                    <div className="flex items-center gap-3 mt-2">
-                      <span className="font-sans text-xs tracking-wider uppercase border border-brand-stone px-2 py-1 text-brand-charcoal">
-                        {item.size}
-                      </span>
-                    </div>
+                    <p className="font-sans text-[10px] tracking-wider uppercase border border-black/20 inline-block px-2 py-0.5 mt-2 text-black/60">
+                      {item.size}
+                    </p>
 
                     <div className="flex items-center justify-between mt-3">
-                      {/* Quantity */}
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() =>
-                            updateQuantity(
-                              item.product.id,
-                              item.size,
-                              item.quantity - 1
-                            )
-                          }
-                          className="w-6 h-6 border border-brand-stone flex items-center justify-center font-sans text-sm text-brand-charcoal hover:border-brand-black transition-colors"
-                        >
-                          −
-                        </button>
-                        <span className="font-sans text-sm w-4 text-center">
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() =>
-                            updateQuantity(
-                              item.product.id,
-                              item.size,
-                              item.quantity + 1
-                            )
-                          }
-                          className="w-6 h-6 border border-brand-stone flex items-center justify-center font-sans text-sm text-brand-charcoal hover:border-brand-black transition-colors"
-                        >
-                          +
-                        </button>
+                      <div className="flex items-center gap-3">
+                        <button onClick={() => updateQuantity(item.product.id, item.size, item.quantity - 1)} className="font-sans text-sm text-black/40 hover:text-black transition-colors w-5 text-center">−</button>
+                        <span className="font-sans text-xs text-black">{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.product.id, item.size, item.quantity + 1)} className="font-sans text-sm text-black/40 hover:text-black transition-colors w-5 text-center">+</button>
                       </div>
-
-                      {/* Price */}
-                      <p className="font-sans text-sm text-brand-black">
+                      <p className="font-sans text-xs text-black">
                         R$ {(item.product.price * item.quantity).toLocaleString("pt-BR")}
                       </p>
                     </div>
 
                     <button
                       onClick={() => removeItem(item.product.id, item.size)}
-                      className="mt-2 font-sans text-xs text-brand-gray hover:text-brand-black transition-colors hover-underline"
+                      className="mt-2 font-sans text-[9px] tracking-widest uppercase text-black/30 hover:text-black transition-colors"
                     >
-                      Remove
+                      Remover
                     </button>
                   </div>
                 </li>
@@ -153,23 +96,17 @@ export default function CartDrawer() {
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="px-8 py-6 border-t border-brand-stone">
-            <div className="flex justify-between items-center mb-2">
-              <p className="font-sans text-xs tracking-widest uppercase text-brand-gray">
-                Subtotal
-              </p>
-              <p className="font-serif text-xl text-brand-black">
-                R$ {total.toLocaleString("pt-BR")}
-              </p>
+          <div className="px-6 py-5 border-t border-black/10">
+            <div className="flex justify-between items-baseline mb-1">
+              <p className="font-sans text-[10px] tracking-widest uppercase text-black/40">Subtotal</p>
+              <p className="font-sans text-sm text-black">R$ {total.toLocaleString("pt-BR")}</p>
             </div>
-            <p className="font-sans text-xs text-brand-gray mb-5">
-              Shipping calculated at checkout.
-            </p>
+            <p className="font-sans text-[10px] text-black/30 mb-4">Frete calculado no checkout.</p>
             <button
               onClick={handleCheckout}
-              className="w-full bg-brand-black text-white font-sans text-xs tracking-widest uppercase py-4 hover:bg-brand-charcoal transition-colors duration-300"
+              className="w-full bg-black text-white font-sans text-[10px] tracking-[0.25em] uppercase py-4 hover:bg-black/80 transition-colors"
             >
-              Proceed to Checkout
+              Finalizar Compra
             </button>
           </div>
         )}

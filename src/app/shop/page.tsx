@@ -6,74 +6,68 @@ import { products } from "@/data/products";
 import { FilterCategory } from "@/types";
 
 const filters: { label: string; value: FilterCategory }[] = [
-  { label: "All", value: "all" },
-  { label: "Renaissance", value: "renaissance" },
-  { label: "Sacred", value: "sacred" },
-  { label: "Philosophy", value: "philosophy" },
-  { label: "Mythology", value: "mythology" },
-  { label: "Archive", value: "archive" },
+  { label: "Todos", value: "all" },
+  { label: "Renascimento", value: "renaissance" },
+  { label: "Sagrado", value: "sacred" },
+  { label: "Filosofia", value: "philosophy" },
+  { label: "Mitologia", value: "mythology" },
+  { label: "Arquivo", value: "archive" },
 ];
 
 export default function ShopPage() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
 
-  const filtered =
-    activeFilter === "all"
-      ? products
-      : products.filter((p) => p.category === activeFilter);
+  const filtered = activeFilter === "all" ? products : products.filter((p) => p.category === activeFilter);
 
   return (
-    <div className="pt-16">
-      {/* Page header */}
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-16 md:py-20 border-b border-brand-stone">
-        <p className="font-sans text-[10px] tracking-widest uppercase text-brand-gray mb-4">
-          Loevre des Arts
-        </p>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <h1 className="font-serif text-5xl md:text-6xl text-brand-black">
-            The Collection
-          </h1>
-          <p className="font-sans text-sm text-brand-gray max-w-xs leading-relaxed">
-            {filtered.length}{" "}
-            {filtered.length === 1 ? "artifact" : "artifacts"} available.
-            Museum-grade prints on heavyweight cotton.
+    <div className="pt-12">
+      {/* Header */}
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-8 py-12 md:py-16 border-b border-black/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-black/30 mb-3">
+              Loevre des Arts
+            </p>
+            <h1 className="font-serif text-5xl md:text-6xl text-black">
+              A Coleção
+            </h1>
+          </div>
+          <p className="font-sans text-[10px] text-black/40 tracking-wider">
+            {filtered.length} {filtered.length === 1 ? "peça" : "peças"}
           </p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-6 border-b border-brand-stone">
-        <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide pb-1">
-          <span className="font-sans text-[10px] tracking-widest uppercase text-brand-gray mr-4 whitespace-nowrap">
-            Filter:
-          </span>
-          {filters.map((filter) => (
-            <button
-              key={filter.value}
-              onClick={() => setActiveFilter(filter.value)}
-              className={`font-sans text-xs tracking-widest uppercase px-5 py-2.5 whitespace-nowrap transition-all duration-200 ${
-                activeFilter === filter.value
-                  ? "bg-brand-black text-white"
-                  : "text-brand-charcoal hover:text-brand-black border border-transparent hover:border-brand-stone"
-              }`}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div>
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-8 py-4 border-b border-black/10 flex items-center gap-1 overflow-x-auto">
+        <span className="font-sans text-[9px] tracking-widest uppercase text-black/30 mr-4 whitespace-nowrap flex-shrink-0">
+          Filtrar:
+        </span>
+        {filters.map((filter) => (
+          <button
+            key={filter.value}
+            onClick={() => setActiveFilter(filter.value)}
+            className={`font-sans text-[9px] tracking-[0.2em] uppercase px-4 py-2 whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
+              activeFilter === filter.value
+                ? "bg-black text-white"
+                : "text-black/50 hover:text-black"
+            }`}
+          >
+            {filter.label}
+          </button>
+        ))}
       </div>
 
-      {/* Product grid */}
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-12 md:py-16">
+      {/* Grid */}
+      <div className="max-w-screen-2xl mx-auto px-5 md:px-8 py-10 md:py-14">
         {filtered.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="font-serif text-5xl text-brand-stone mb-4">∅</p>
-            <p className="font-sans text-sm text-brand-gray">
-              No pieces in this category yet.
+          <div className="text-center py-24">
+            <p className="font-sans text-[10px] tracking-widest uppercase text-black/20">
+              Nenhuma peça nesta categoria.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-14">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12">
             {filtered.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
@@ -81,12 +75,10 @@ export default function ShopPage() {
         )}
       </div>
 
-      {/* Bottom note */}
-      <div className="border-t border-brand-stone py-8 px-6 md:px-10">
-        <div className="max-w-screen-xl mx-auto text-center">
-          <p className="font-sans text-xs text-brand-gray tracking-wider">
-            All pieces ship within 5–7 business days. Limited edition runs.
-            Once sold out, permanently archived.
+      <div className="border-t border-black/10 py-6 px-5 md:px-8">
+        <div className="max-w-screen-2xl mx-auto text-center">
+          <p className="font-sans text-[9px] text-black/25 tracking-wider">
+            Todas as peças enviam em 5–7 dias úteis. Edições limitadas. Esgotado = arquivado permanentemente.
           </p>
         </div>
       </div>
